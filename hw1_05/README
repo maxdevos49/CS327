@@ -1,0 +1,38 @@
+Computer Science 327 Dungeon Crawler
+====================================
+Author: Maxwell DeVos
+
+About
+-----
+This project is a dungeon crawler being developed in c for CS327. Current functionality 
+includes generating a dungeon with connecting corridors and then drawing it to a terminal. 
+It also supports saving and loading files from its default save directory or from its 
+working directory if that location was not found. The game is now playable using the vim
+movement layout provided in the current assignment spec. It also includes a monster list
+that can be accessed with 'm' and closed with the escape key.
+
+
+Switches
+--------
+--load, -l
+    Loads a dungeon from a save file
+--save, -s
+    Saves a dungeon to a file
+--seed <seed> 
+    supplies a seed to the dungeon generator
+--nummon <monster count>
+    supplies an amount of monsters to attempt to spawn to the screen(default 10)
+
+
+Compilation
+-----------
+Compilation includes running the below command in the home directory of the project:
+    make
+
+
+Running
+-------
+Running the program requires you to run the command:
+    make run
+Or:
+    ./bin/dungeon <Optional Switches>

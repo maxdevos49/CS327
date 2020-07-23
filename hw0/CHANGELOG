@@ -1,0 +1,5 @@
+# CHANGLOG
+01/22/2019 - I changed the starting template to use arguments for image inputs
+01/22/2019 - I implemented the apply_square_matrix function to apply a kernel over a given image array
+01/22/2019 - I debugged the function and got a working version but without clamping the values.
+01/22/2019 - I added clamping and made the image much smoother.

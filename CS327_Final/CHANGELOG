@@ -1,0 +1,20 @@
+April 27, 2019
+--------------
+created program folder structure
+created the game class and config class
+created the SceneManager class
+created the Renderer class
+
+April 28, 2019
+--------------
+created Scene class
+made the scene class have virtual properties
+made the scenes show up finally
+
+April 29, 2019
+--------------
+created the title scene
+created the game scene
+created the pacman grid map array
+created the title scene rendering method and added its code
+created the gamescene rendering method and rendered the map

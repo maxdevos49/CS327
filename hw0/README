@@ -1,0 +1,8 @@
+# Sobel Filter - Homework 0 CS327
+
+### Compile
+To compile the project use the command: make
+
+### Run
+To run the program use the command: ./sobel given_image.pgm 
+where given_image.pgm is a pgm image you have supplied.

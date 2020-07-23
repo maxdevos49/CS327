@@ -1,0 +1,32 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "HW 1.06",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/hw1_06/bin/dungeon",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/hw1_06",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "lldb"
+        },
+        {
+            "name": "HW 1.05",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/hw1_05/bin/dungeon",
+            "args": ["--load"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/hw1_05",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb"
+        }
+    ]
+}

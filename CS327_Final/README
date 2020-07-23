@@ -1,0 +1,29 @@
+Scene Based Game Library and partial Pacman Implementation
+==================================================
+
+Author: Maxwell DeVos
+
+Compile
+--------
+$ make
+
+Run
+----
+$ ./pacman
+
+About
+-----
+This program is a Scene based Game library written in c++ to render scenes with ncurses. Each scene has a 
+create, update, and render method. These methods are called by the scene manager that controls the flow of
+the game. Scenes can be run 1 at a time or in parallel. 
+
+Controls
+--------
+Switch scenes press 's'
+Pause scene press 'p'
+Quit press 'q'
+
+Other
+-----
+The game library is in the lib folder. Everything outside of the lib folder is code using the library to 
+create pacman. 

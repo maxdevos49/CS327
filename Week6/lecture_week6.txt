@@ -1,0 +1,164 @@
+Week 6
+
+* Declarations
+** Scope and lifetime
+   Scope - Where in a program a variable is accessible
+   Lifetime - when in a program a variable exists
+** Keywords that alter declaration semantics
+*** auto
+    This is the default for variables defined in functions, so you very
+    rarely see it used explicitly.  Variable's scope is restricted to the 
+    function in which it is declared.  Lifetime is the same as that of the
+    function. 
+*** const
+    Makes the variable immutable.  Doesn't affect scope or lifetime.
+    Some compilers will put the variable in the text segment, which means
+    that it's actual lifetime would be equal to that of the program; however,
+    it would be an error to depend on this.
+*** extern
+    Means that the storage for the variable is created elsewhere; used to
+    export data to other compilation units.  It only makes sense to use an
+    external declaration for variables in global scope.
+*** static
+    In a function, changes the variables lifetime to be the lifetime of the
+    program.  Scope is unaffected.
+    On globals, prevents variable or function from being exported from the
+    compilation unit.  This is useful for internal functions of an ADT.
+    Think "private".
+*** register
+    Doesn't affect lifetime or scope.
+    The compiler will try to put the variable in a register
+
+    volatile int i = 1;
+    while (i)
+      ;
+
+*** volatile
+    Does not affect lifetime or scope.
+    Tells the compiler that this value could change outside of the control of
+    normal program flow.
+*** inline
+    Optimization.  Does not affect lifetime or scope.  Only for functions.
+    Similar to function-type macros.  Puts function body inside caller
+    without function call.
+* Reading and understand declarations: The "right-left" rule
+  Go right when you can; go left when you must.
+
+int i;                  i is an int
+int *p;                 p is pointer to int
+int a[];                a is array of int
+int f();                f is a function returning int
+int **pp;               pp is pointer to pointer to int
+int (*pa)[];            pa is pointer to array of int
+int (*pf)();            pf is pointer to function returning int
+int *ap[];              ap is array of pointer to int
+int aa[][];             
+int af[]();             
+int *fp();              
+int fa()[];             
+                        
+int ***ppp;             
+int (**ppa)[];          
+int (**ppf)();          
+int *(*pap)[];          
+int (*paa)[][];         
+int (*paf)[]();         
+                        
+int *(*pfp)();          pfp is pointer to function returning pointer to int
+
+                        
+int (*pff)()();         
+                        
+int **app[];            
+int (*apa[])[];         
+int (*apf[])();         
+int *aap[][];           
+int aaa[][][];          
+int aaf[][]();          
+                        
+int *afp[]();           
+int afa[]()[];          
+                        
+int aff[]()();          
+                        
+int **fpp();            
+int (*fpa())[];         
+int (*fpf())();         
+                        
+int *fap()[];           
+int faa()[][];          
+                        
+int faf()[]();          
+                        
+int *ffp()();           
+                        
+* Goto
+** "Go To Statement Considered Harmful" by Edsgar Dijkstra, 1968
+** "Structured Programming with go to Statements" by Don Knuth, 1974
+
+   Generally, do not use.
+   Specifically, useful for de-inits
+
+* Variadic functions
+** A function that has variable arity (takes a variable number of arguments)
+   Like printf()
+        scanf()
+        open()
+   What's going on with v*printf()?
+** How can we write such a function?
+   Need to use stdarg(3).  stdarg.h declares a type, va_list, and a handful
+   of macros to work on that type:
+       void va_start(va_list ap, last);
+       type va_arg(va_list ap, type);
+       void va_end(va_list ap);
+       void va_copy(va_list dest, va_list src);
+   The man page makes them look like functions, but really they're macros.
+* Variadic macros
+** C99
+** Simpler than variadic functions.  End your argument list with an elipsis
+   and replace it with __VA_ARGS__.  For example:
+     #define eprintf(...) fprintf(stderr, __VA_ARGS__)
+** Special meaning for the concatenation operator, ##
+   Above macro leads to a compile-time error if called with no arguments:
+     eprintf() -> fprintf(stderr,)
+   If you use ## ahead of __VA_ARGS__, then if __VA_ARGS__ is empty, the 
+   preceding comma is removed:
+     #define eprintf(...) fprintf(stderr, ##__VA_ARGS__)
+   yielding
+     eprintf() -> fprintf(stderr)
+   which is still an error, since a format string is required.
+
+
+* Common command-line switches
+** -g
+   Inserts debugging symbols
+   -g1 -g2 -g3 -ggdb
+** -c
+   Partial compile (don't link, create a .o)
+** -o
+   Names the output
+** -Wall (and -Werror)
+   -Wall turns on lots of useful warnings
+   -Werror turns those warnings into errors
+** -O
+   Optimization
+   -O1 -O2 -O3 
+   -O3 is scary.  Does optimizations that may be incorrect.
+** -D
+   Defines macros on the command line
+   -DDEBUG=2
+** -I
+   Add a path to search for include files
+** -L
+   Add a path for library search (for the linker)
+** -l
+   Specifies a library to link
+   -lm
+   -lncurses
+   -lpthread
+** To help with makefiles: -MMD -MF
+   Automatic dependency generation
+** For profiling: -pg
+   So that you can optimize intelligently
+** To be annoying: -ansi
+** To be *really* annoying: -pedantic
