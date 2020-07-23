@@ -25,7 +25,7 @@ int main(int argc, char const *argv[])
 
     fill_map(map);
 
-    //smooth hardness with gausian filter
+    //smooth hardness with gaussian filter
     int matrix[3][3] = {
         {0, 2, 0},
         {2, 4, 2},
