@@ -2,3 +2,6 @@ bin
 .vscode
 *.dSYM
 .DS_Store
+*.code-workspace
+hw_feedback
+cppServers
