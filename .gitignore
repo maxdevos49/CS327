@@ -1,3 +1,4 @@
 bin
 .vscode
 *.dSYM
+.DS_Store
