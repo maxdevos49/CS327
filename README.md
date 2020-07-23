@@ -6,7 +6,7 @@ All of my homework from taking CS327 during the spring of 2019. During this clas
 Folder Naming:
 1. Week*(Week1, Week2, ...etc) - My notes/or examples that were shown in class.
    
-2. hw*_**(hw1_01, hw1_02, ...etc) - My implementation of that weeks assignment. I would start the next week my pulling in partial changes for the professors solution that I thought would improve maintainability or reduce complexity.
+2. hw*_**(hw1_01, hw1_02, ...etc) - My implementation of that weeks assignment. I would start the next week by pulling in partial changes of the professors solution that I thought would improve maintainability or reduce complexity.
    
 3. s_hw*_**(s_hw1_01, s_hw1_02, ...etc)) - The professors solution for a weeks assignment. This code was not written by me but by my professor so all students could have a starting point for the next week if they choose not to continue there own implementation.
 
